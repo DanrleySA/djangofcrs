@@ -11,9 +11,15 @@
   <body>
     <div class="container">
       <h1>{{evento.nome}}</h1>
-      <h3>Vagas: {{evento.vagas}} vaga{{evento.vagas|pluralize}}</h3>      
-        <form class="" action="" method="post">
-          {% csrf_token %}
+      <h3>Vagas: {{evento.vagas}} vaga{{evento.vagas|pluralize}}</h3>
+      {% if msg %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          {{msg}}
+        </div>
+      {% endif %}
+      <form class="" action="" method="post">
+        {% csrf_token %}
           <div class="form-group col-md-6">
             <label for="">Nome</label>
             {{form.nome}}
